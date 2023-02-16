@@ -26,21 +26,13 @@ clonefile(...)
 PPCODE:
 {
   if (items != 2) {
-    croak("items != 2");
+    croak("clonefile: the length of arguments must be 2");
   }
-
-  SV* src = ST(0);
-  STRLEN src_len;
-  const char* src_char = SvPV(src, src_len);
-
-  SV* dst = ST(1);
-  STRLEN dst_len;
-  const char* dst_char = SvPV(dst, dst_len);
-
-  if (clonefile(src_char, dst_char, 0) == 0) {
-    XPUSHs(boolSV(TRUE));
+  const char* src = SvPV_nolen(ST(0));
+  const char* dst = SvPV_nolen(ST(1));
+  if (clonefile(src, dst, 0) == 0) {
+    XSRETURN_YES;
   } else {
-    XPUSHs(&PL_sv_undef);
+    XSRETURN_UNDEF;
   }
-  XSRETURN(1);
 }
