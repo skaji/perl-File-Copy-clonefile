@@ -1,0 +1,22 @@
+name: test
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: /usr/bin/perl -V
+      - run: /usr/bin/prove --version
+      - name: Install Dependencies
+        run: curl -fsSL --compressed https://raw.githubusercontent.com/skaji/cpm/main/cpm | /usr/bin/perl - install --sudo -g --with-configure --with-develop --with-recommends --show-build-log-on-failure
+      - run: /usr/bin/perl Build.PL
+      - run: ./Build
+      - run: env HARNESS_COLOR=1 ./Build test
