@@ -8,3 +8,4 @@ prereqs:
   configure:
     requires:
       Module::Build:
+      Devel::CheckCompiler: { version: '0.07' }

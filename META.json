@@ -21,6 +21,7 @@
       },
       "configure" : {
          "requires" : {
+            "Devel::CheckCompiler" : "0.07",
             "Module::Build" : "0.28"
          }
       },

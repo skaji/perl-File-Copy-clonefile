@@ -15,6 +15,7 @@ File::Copy::clonefile - call clonefile system call
 
 File::Copy::clonefile is a wrapper for
 [clonefile](https://www.manpagez.com/man/2/clonefile/) system call.
+Thus, this module only supports platforms that have clonefile system call, such as macos.
 
 # COPYRIGHT AND LICENSE
 
