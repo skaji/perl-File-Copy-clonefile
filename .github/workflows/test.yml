@@ -11,6 +11,8 @@ on:
 jobs:
   macos:
     runs-on: macos-latest
+    env:
+      HARNESS_COLOR: "1"
     steps:
       - uses: actions/checkout@v3
       - run: /usr/bin/perl -V
@@ -19,4 +21,4 @@ jobs:
         run: curl -fsSL --compressed https://raw.githubusercontent.com/skaji/cpm/main/cpm | /usr/bin/perl - install --sudo -g --with-configure --with-develop --with-recommends --show-build-log-on-failure
       - run: /usr/bin/perl Build.PL
       - run: ./Build
-      - run: env HARNESS_COLOR=1 ./Build test
+      - run: ./Build test

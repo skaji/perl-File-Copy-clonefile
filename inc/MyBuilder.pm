@@ -20,7 +20,13 @@ sub new ($class, %argv) {
         print "This module only supports platforms that have clonefile system call, such as macos.\n";
         exit 0;
     }
-    $class->SUPER::new(%argv);
+    my %extra;
+    if (-d ".git") {
+        %extra = (
+            extra_compiler_flags => ['-Wall', '-Wextra', '-Werror'],
+        );
+    }
+    $class->SUPER::new(%extra, %argv);
 }
 
 1;
