@@ -12,6 +12,7 @@ my %module_build_args = (
   },
   "configure_requires" => {
     "Devel::CheckCompiler" => "0.07",
+    "ExtUtils::Constant" => 0,
     "Module::Build" => "0.28"
   },
   "dist_abstract" => "call clonefile system call",

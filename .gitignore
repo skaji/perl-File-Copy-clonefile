@@ -6,3 +6,5 @@
 /_build
 *.c
 *.o
+const-c.inc
+const-xs.inc

@@ -3,6 +3,7 @@ use v5.20;
 use warnings;
 use experimental 'signatures';
 
+use ExtUtils::Constant ();
 use Devel::CheckCompiler ();
 use parent 'Module::Build';
 
@@ -20,13 +21,22 @@ sub new ($class, %argv) {
         print "This module only supports platforms that have clonefile system call, such as macos.\n";
         exit 0;
     }
-    my %extra;
     if (-d ".git") {
-        %extra = (
-            extra_compiler_flags => ['-Wall', '-Wextra', '-Werror'],
-        );
+        %argv = (%argv, extra_compiler_flags => ['-Wall', '-Wextra', '-Werror']);
     }
-    $class->SUPER::new(%extra, %argv);
+    my $self = $class->SUPER::new(%argv);
+    $self->_write_constants;
+    $self;
+}
+
+sub _write_constants ($self) {
+    ExtUtils::Constant::WriteConstants(
+        NAME => $self->module_name,
+        NAMES => [qw(CLONE_NOFOLLOW CLONE_NOOWNERCOPY CLONE_ACL)],
+        PROXYSUBS => { autoload => 1 },
+        C_FILE => 'lib/File/Copy/const-c.inc',
+        XS_FILE => 'lib/File/Copy/const-xs.inc',
+    );
 }
 
 1;

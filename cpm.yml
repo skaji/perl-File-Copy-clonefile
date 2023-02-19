@@ -8,4 +8,5 @@ prereqs:
   configure:
     requires:
       Module::Build:
+      ExtUtils::Constant:
       Devel::CheckCompiler: { version: '0.07' }

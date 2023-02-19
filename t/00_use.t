@@ -8,7 +8,7 @@ use File::Temp qw(tempdir);
 
 use Test::More;
 use Test::LeakTrace;
-use File::Copy::clonefile qw(clonefile);
+use File::Copy::clonefile qw(clonefile CLONE_NOFOLLOW);
 
 sub spew ($file, $content) {
     open my $fh, ">", $file or die "$!: $file";
@@ -40,6 +40,15 @@ no_leaks_ok {
     clonefile "test.txt", "test2.txt";
     clonefile "test.txt", "test3.txt";
 };
+
+{
+    spew "original.txt", "this is original";
+    symlink "original.txt", "link.txt";
+    clonefile "link.txt", "test4.txt" or die;
+    clonefile "link.txt", "test5.txt", CLONE_NOFOLLOW or die;
+    ok(-e "test4.txt" && !-l "test4.txt");
+    ok(-e "test5.txt" &&  -l "test5.txt");
+}
 
 chdir $cwd;
 
