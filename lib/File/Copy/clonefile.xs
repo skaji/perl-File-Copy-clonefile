@@ -17,7 +17,11 @@ extern "C" {
 #include <sys/attr.h>
 #include <sys/clonefile.h>
 
+#include "const-c.inc"
+
 MODULE = File::Copy::clonefile  PACKAGE = File::Copy::clonefile
+
+INCLUDE: const-xs.inc
 
 PROTOTYPES: DISABLE
 
@@ -25,12 +29,16 @@ void
 clonefile(...)
 PPCODE:
 {
-  if (items != 2) {
-    croak("clonefile: the length of arguments must be 2");
+  if (items != 2 && items != 3) {
+    croak("clonefile: the length of arguments must be 2 or 3");
   }
   const char* src = SvPV_nolen(ST(0));
   const char* dst = SvPV_nolen(ST(1));
-  if (clonefile(src, dst, 0) == 0) {
+  IV flags = 0;
+  if (items == 3) {
+    flags = SvIV(ST(2));
+  }
+  if (clonefile(src, dst, (int)flags) == 0) {
     XSRETURN_YES;
   } else {
     XSRETURN_UNDEF;

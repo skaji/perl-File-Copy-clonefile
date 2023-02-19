@@ -3,7 +3,10 @@ use v5.20;
 use warnings;
 
 use Exporter 'import';
-our @EXPORT_OK = qw(clonefile);
+our @EXPORT_OK = qw(
+    clonefile
+    CLONE_NOFOLLOW CLONE_NOOWNERCOPY CLONE_ACL
+);
 
 use XSLoader;
 XSLoader::load __PACKAGE__, __PACKAGE__->VERSION;
