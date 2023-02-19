@@ -40,7 +40,7 @@
    "provides" : {
       "File::Copy::clonefile" : {
          "file" : "lib/File/Copy/clonefile.pm",
-         "version" : "v0.0.3"
+         "version" : "v0.0.4"
       }
    },
    "release_status" : "stable",
@@ -55,7 +55,7 @@
          "web" : "https://github.com/skaji/perl-File-Copy-clonefile"
       }
    },
-   "version" : "v0.0.3",
+   "version" : "v0.0.4",
    "x_generated_by_perl" : "v5.36.0",
    "x_serialization_backend" : "Cpanel::JSON::XS version 4.32",
    "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later",

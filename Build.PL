@@ -20,7 +20,7 @@ my %module_build_args = (
     "Shoichi Kaji <skaji\@cpan.org>"
   ],
   "dist_name" => "File-Copy-clonefile",
-  "dist_version" => "v0.0.3",
+  "dist_version" => "v0.0.4",
   "license" => "perl",
   "module_name" => "File::Copy::clonefile",
   "recursive_test_files" => 1,
