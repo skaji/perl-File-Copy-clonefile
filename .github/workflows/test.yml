@@ -14,7 +14,7 @@ jobs:
     env:
       HARNESS_COLOR: "1"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: /usr/bin/perl -V
       - run: /usr/bin/prove --version
       - name: Install Dependencies
