@@ -7,6 +7,6 @@ prereqs:
       Test::LeakTrace:
   configure:
     requires:
-      Module::Build:
+      Dist::Build: { version: '0.006' }
       ExtUtils::Constant:
       Devel::CheckCompiler: { version: '0.07' }
