@@ -16,8 +16,8 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Devel::CheckCompiler" : "0.07",
             "Dist::Build" : "0.013",
+            "ExtUtils::Builder::Compiler" : "0.020",
             "ExtUtils::Constant" : "0"
          }
       },
