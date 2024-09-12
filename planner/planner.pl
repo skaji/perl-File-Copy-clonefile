@@ -12,11 +12,10 @@ int main() {
 }
 EOF
 
-my $ok; {
-    open my $fh, ">", \my $null;
-    local *STDOUT = $fh;
-    $ok = try_compile_run(source => $source);
-}
+my $ok = try_compile_run(
+    source => $source,
+    quiet  => 1,
+);
 if (!$ok) {
     die "This module only supports platforms that have clonefile system call, such as macos.\n";
 }
