@@ -16,7 +16,6 @@ my $ok; {
     open my $fh, ">", \my $null;
     local *STDOUT = $fh;
     $ok = try_compile_run(source => $source);
-    unlink $_ for glob "try_compile*";
 }
 if (!$ok) {
     die "This module only supports platforms that have clonefile system call, such as macos.\n";
