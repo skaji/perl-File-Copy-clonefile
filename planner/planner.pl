@@ -19,25 +19,12 @@ assert_compile_run(
 );
 
 load_module('Dist::Build::XS');
+load_module('Dist::Build::XS::WriteConstants');
 
 add_xs(
+    write_constants => {
+        NAMES => [qw(CLONE_NOFOLLOW CLONE_NOOWNERCOPY CLONE_ACL)],
+        PROXYSUBS => { autoload => 1 },
+    },
     -d ".git" ? ( extra_compiler_flags => ['-Wall', '-Wextra', '-Werror'] ) : (),
-);
-
-my $write_constants = function(module => "MyFunc", function => "write_constants");
-
-create_node(
-    target => "lib/File/Copy/const-xs.inc",
-    actions => [ $write_constants ],
-);
-
-create_node(
-    target => "lib/File/Copy/const-c.inc",
-    actions => [ $write_constants ],
-);
-
-create_node(
-    target => "code",
-    dependencies => [ "lib/File/Copy/const-xs.inc", "lib/File/Copy/const-c.inc" ],
-    phony => 1,
 );
