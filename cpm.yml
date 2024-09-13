@@ -8,5 +8,6 @@ prereqs:
   configure:
     requires:
       Dist::Build: { version: '0.013' }
-      ExtUtils::Builder::Compiler: { version: '0.020' }
+      Dist::Build::XS::WriteConstants:
+      ExtUtils::Builder::Compiler: { version: '0.021' }
       ExtUtils::Constant:
