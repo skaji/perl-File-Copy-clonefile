@@ -35,7 +35,7 @@
    "provides" : {
       "File::Copy::clonefile" : {
          "file" : "lib/File/Copy/clonefile.pm",
-         "version" : "v0.0.6"
+         "version" : "v0.0.7"
       }
    },
    "release_status" : "stable",
@@ -50,7 +50,7 @@
          "web" : "https://github.com/skaji/perl-File-Copy-clonefile"
       }
    },
-   "version" : "v0.0.6",
+   "version" : "v0.0.7",
    "x_contributors" : [
       "Leon Timmermans <fawaka@gmail.com>"
    ],
