@@ -2,6 +2,7 @@ prereqs:
   configure:
     requires:
       Dist::Build: { version: '0.015' }
+      perl: { version: 'v5.20' }
   runtime:
     requires:
       perl: { version: 'v5.20' }
