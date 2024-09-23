@@ -1,12 +1,10 @@
 prereqs:
+  configure:
+    requires:
+      Dist::Build: { version: '0.015' }
   runtime:
     requires:
       perl: { version: 'v5.20' }
   test:
     requires:
       Test::LeakTrace:
-  configure:
-    requires:
-      Dist::Build: { version: '0.014' }
-      ExtUtils::Builder::Compiler: { version: '0.021' }
-      ExtUtils::Constant:
