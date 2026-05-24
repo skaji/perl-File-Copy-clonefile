@@ -1,7 +1,7 @@
 package MyBuilder;
-use v5.20;
+use v5.24;
 use warnings;
-use experimental 'signatures';
+use experimental qw(lexical_subs signatures);
 
 package MyCBuilder {
     use parent 'ExtUtils::CBuilder';
